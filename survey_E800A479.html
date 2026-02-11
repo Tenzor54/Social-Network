@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой первый опрос</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .survey-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-top: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .header h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+        .question:hover {
+            transform: translateX(5px);
+        }
+        .question label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+        .question input, 
+        .question textarea, 
+        .question select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border 0.3s ease;
+        }
+        .question input:focus, 
+        .question textarea:focus, 
+        .question select:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        .question textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto 0;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .required::after {
+            content: " *";
+            color: #e74c3c;
+        }
+        .thank-you {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .thank-you h2 {
+            color: #27ae60;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .thank-you p {
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+        .counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .survey-card { padding: 20px; }
+            .header h1 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="counter">
+        Вопрос <span id="current">1</span> из 3
+    </div>
+    
+    <div class="container">
+        <div class="survey-card">
+            <div class="header">
+                <h1>Мой первый опрос</h1>
+                <p>Пожалуйста, ответьте на все вопросы честно</p>
+            </div>
+            
+            <form id="surveyForm">
+                <input type="hidden" name="survey_id" value="E800A479">
+                <input type="hidden" name="timestamp" id="timestamp">
+                
+                
+        <div class="question">
+            <label for="q1" class="required">1. Сотрудничество с кем из коллег наиболее важно для вашей работы?</label>
+        <input type="text" id="q1" name="q1" placeholder="Введите ответ..." required></div>
+        <div class="question">
+            <label for="q2" class="required">2. Для участия в новом сложном и интересном проекте, с кем бы вы хотели попасть в одну проектную группу?</label>
+        <input type="text" id="q2" name="q2" placeholder="Введите ответ..." required></div>
+        <div class="question">
+            <label for="q3" class="required">3. От кого вы узнаете полезную для вашей работы информацию и/или последние университетские новости? Также выберите тех, к кому вы сами обращаетесь, когда необходима дополнительная информация.</label>
+        
+            <select id="q3" name="q3" required>
+                <option value="">Выберите пол</option>
+                <option value="Мужской">Мужской</option>
+                <option value="Женский">Женский</option>
+                <option value="Другое">Другое</option>
+                <option value="Не указывать">Предпочитаю не указывать</option>
+            </select>
+            </div>
+                
+                <button type="submit" class="submit-btn">📤 Отправить ответы</button>
+            </form>
+            
+            <div id="thankYou" class="thank-you">
+                <h2>🎉 Спасибо за участие!</h2>
+                <p>Ваши ответы успешно сохранены.</p>
+                <p>Вы можете закрыть эту страницу.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Устанавливаем текущее время
+        document.getElementById('timestamp').value = new Date().toISOString();
+        
+        // Обновляем счетчик
+        function updateCounter() {
+            const questions = document.querySelectorAll('.question');
+            let current = 1;
+            questions.forEach((q, index) => {
+                const input = q.querySelector('input, textarea, select');
+                if (input && input.value.trim()) {
+                    current = index + 2;
+                }
+            });
+            if (current > 3) current = 3;
+            document.getElementById('current').textContent = current;
+        }
+        
+        // Слушаем изменения в полях ввода
+        document.querySelectorAll('input, textarea, select').forEach(field => {
+            field.addEventListener('input', updateCounter);
+            field.addEventListener('change', updateCounter);
+        });
+        
+        // Обработка отправки формы
+        document.getElementById('surveyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.innerHTML = '🔄 Отправка...';
+            submitBtn.disabled = true;
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                // ВАЖНО: Замените этот URL на ваш Google Apps Script URL
+                const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwYOUR_SCRIPT_ID/exec';
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                // Показываем сообщение об успехе
+                document.getElementById('surveyForm').style.display = 'none';
+                document.getElementById('thankYou').style.display = 'block';
+                
+            } catch (error) {
+                alert('Ошибка при отправке. Пожалуйста, попробуйте еще раз.');
+                submitBtn.innerHTML = '📤 Отправить ответы';
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Инициализация счетчика
+        updateCounter();
+    </script>
+</body>
+</html>
